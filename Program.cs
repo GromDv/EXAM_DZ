@@ -33,10 +33,20 @@ string[] SelectLessStr(string[] array, int param)
 }
 
 
-string[] arrayIn = { "hello", "2", "world", ":-)" };    // Создаем массив разных строк
 
-PrintArray(arrayIn);                                    // Выводим этот массив
+Console.Write("Введите несколько слов, разделяя пробелами: ");
+string? inputStr = Console.ReadLine();                          // ? - учитываем возможность введения пустой строки
+Console.WriteLine();                                            // Пропускаем строку
 
-string[] less3str = SelectLessStr(arrayIn, 3);          // В новый массив отбираем строки, равные или короче 3
+if (inputStr != null)                                           // если введена не пустая строка, то...
+{
+    string[] arrayIn = inputStr.Split(' ');                        // Создаем массив слов
 
-PrintArray(less3str);                                   // Выводим этот массив
+    PrintArray(arrayIn);                                        // Выводим этот массив
+
+    string[] less3str = SelectLessStr(arrayIn, 3);              // В новый массив отбираем строки, равные или короче 3
+
+    PrintArray(less3str);                                       // Выводим этот массив
+}
+else
+    Console.Write("Слова не были введены!");
